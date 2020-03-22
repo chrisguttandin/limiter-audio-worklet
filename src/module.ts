@@ -35,11 +35,15 @@ export function createLimiterAudioWorkletNode <T extends TContext | TNativeConte
     type TAnyAudioWorkletNode = T extends TContext ? IAudioWorkletNode<T> : TNativeAudioWorkletNode;
     type TAnyLimiterAudioWorkletNode = T extends TContext ? ILimiterAudioWorkletNode<T> : TNativeLimiterAudioWorkletNode;
 
+    const { attack = 0 } = options;
     const audioWorkletNode: TAnyAudioWorkletNode = new (<any> audioWorkletNodeConstructor)(context, 'limiter-audio-worklet-processor', {
         ...options,
         channelCountMode: 'explicit',
         numberOfInputs: 1,
-        numberOfOutputs: 1
+        numberOfOutputs: 1,
+        pocessorOptions: {
+            attack
+        }
     });
 
     Object.defineProperties(audioWorkletNode, {
