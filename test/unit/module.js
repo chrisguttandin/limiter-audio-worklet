@@ -3,9 +3,7 @@ import { addLimiterAudioWorkletModule, createLimiterAudioWorkletNode } from '../
 import { spy } from 'sinon';
 
 describe('module', () => {
-
     describe('addLimiterAudioWorkletModule()', () => {
-
         it('should call the given function with an URL', () => {
             const addAudioWorkletModule = spy();
 
@@ -19,11 +17,9 @@ describe('module', () => {
             expect(args[0]).to.be.a('string');
             expect(args[0]).to.match(/^blob:/);
         });
-
     });
 
     describe('createLimiterAudioWorkletNode()', () => {
-
         const testCases = {
             'with a native AudioContext': {
                 audioWorkletNodeConstructor: window.AudioWorkletNode,
@@ -41,10 +37,10 @@ describe('module', () => {
             delete testCases['with a native AudioContext'];
         }
 
-        for (const [ description, { audioWorkletNodeConstructor, createAddAudioWorkletModule, createContext } ] of Object.entries(testCases)) {
-
-            describe(`with the ${ description }`, () => {
-
+        for (const [description, { audioWorkletNodeConstructor, createAddAudioWorkletModule, createContext }] of Object.entries(
+            testCases
+        )) {
+            describe(`with the ${description}`, () => {
                 let context;
                 let limiterAudioWorkletNode;
 
@@ -85,19 +81,13 @@ describe('module', () => {
                 });
 
                 describe('port', () => {
-
                     it('should throw an error', () => {
                         expect(() => {
                             limiterAudioWorkletNode.port;
                         }).to.throw(Error, "The port of a LimiterAudioWorkletNode can't be accessed.");
                     });
-
                 });
-
             });
-
         }
-
     });
-
 });
