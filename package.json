@@ -16,7 +16,7 @@
     },
     "description": "This module provides a loader for the LimiterAudioWorkletProcessor and the corresponding LimiterAudioWorkletNode.",
     "devDependencies": {
-        "@babel/core": "^7.12.10",
+        "@babel/core": "^7.12.13",
         "@babel/plugin-external-helpers": "^7.12.1",
         "@babel/plugin-transform-runtime": "^7.12.10",
         "@babel/preset-env": "^7.12.11",
