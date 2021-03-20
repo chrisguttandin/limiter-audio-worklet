@@ -11,7 +11,7 @@
     "dependencies": {
         "@babel/runtime": "^7.13.10",
         "limiter-audio-worklet-processor": "^1.1.21",
-        "standardized-audio-context": "^25.1.11",
+        "standardized-audio-context": "^25.1.12",
         "tslib": "^2.1.0"
     },
     "description": "This module provides a loader for the LimiterAudioWorkletProcessor and the corresponding LimiterAudioWorkletNode.",
