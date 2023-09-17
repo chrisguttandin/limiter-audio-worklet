@@ -11,7 +11,6 @@
     "dependencies": {
         "@babel/runtime": "^7.22.6",
         "limiter-audio-worklet-processor": "^1.1.56",
-        "linked": "^0.2.0",
         "standardized-audio-context": "^25.3.55",
         "tslib": "^2.6.1"
     },
