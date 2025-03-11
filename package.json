@@ -9,7 +9,7 @@
         }
     },
     "dependencies": {
-        "@babel/runtime": "^7.26.9",
+        "@babel/runtime": "^7.26.10",
         "limiter-audio-worklet-processor": "^1.1.79",
         "standardized-audio-context": "^25.3.77",
         "tslib": "^2.8.1"
