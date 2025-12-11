@@ -1,5 +1,6 @@
 import { AudioContext, AudioWorkletNode } from 'standardized-audio-context';
 import { addLimiterAudioWorkletModule, createLimiterAudioWorkletNode } from '../../src/module';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { spy } from 'sinon';
 
 describe('module', () => {
