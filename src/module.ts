@@ -7,7 +7,7 @@ import {
     TNativeContext
 } from 'standardized-audio-context';
 import { ILimiterAudioWorkletNode } from './interfaces';
-import { TAnyLimiterAudioWorkletNodeOptions, TNativeLimiterAudioWorkletNode } from './types';
+import { TAnyAudioWorkletNodeOptions, TAnyLimiterAudioWorkletNodeOptions, TFixedOptions, TNativeLimiterAudioWorkletNode } from './types';
 import { worklet } from './worklet/worklet';
 
 /*
@@ -38,14 +38,17 @@ export function createLimiterAudioWorkletNode<T extends TContext | TNativeContex
     type TAnyLimiterAudioWorkletNode = T extends TContext ? ILimiterAudioWorkletNode<T> : TNativeLimiterAudioWorkletNode;
 
     const { attack = 0 } = options;
-    const audioWorkletNode: TAnyAudioWorkletNode = new (<any>audioWorkletNodeConstructor)(context, 'limiter-audio-worklet-processor', {
-        ...options,
+    const fixedOptions: Required<Pick<TAnyAudioWorkletNodeOptions<T>, TFixedOptions>> = {
         channelCountMode: 'explicit',
         numberOfInputs: 1,
         numberOfOutputs: 1,
         processorOptions: {
             attack
         }
+    };
+    const audioWorkletNode: TAnyAudioWorkletNode = new (<any>audioWorkletNodeConstructor)(context, 'limiter-audio-worklet-processor', {
+        ...options,
+        ...fixedOptions
     });
 
     Object.defineProperties(audioWorkletNode, {
