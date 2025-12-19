@@ -32,12 +32,11 @@ export const addLimiterAudioWorkletModule = async (addAudioWorkletModule: (url: 
 export function createLimiterAudioWorkletNode<T extends TContext | TNativeContext>(
     audioWorkletNodeConstructor: T extends TContext ? TAudioWorkletNodeConstructor : TNativeAudioWorkletNodeConstructor,
     context: T,
-    options: Partial<TAnyLimiterAudioWorkletNodeOptions<T>> = {}
+    { attack = 0, ...options }: TAnyLimiterAudioWorkletNodeOptions<T> = {}
 ): T extends TContext ? ILimiterAudioWorkletNode<T> : TNativeLimiterAudioWorkletNode {
     type TAnyAudioWorkletNode = T extends TContext ? IAudioWorkletNode<T> : TNativeAudioWorkletNode;
     type TAnyLimiterAudioWorkletNode = T extends TContext ? ILimiterAudioWorkletNode<T> : TNativeLimiterAudioWorkletNode;
 
-    const { attack = 0 } = options;
     const fixedOptions: Required<Pick<TAnyAudioWorkletNodeOptions<T>, TFixedOptions>> = {
         channelCountMode: 'explicit',
         numberOfInputs: 1,
