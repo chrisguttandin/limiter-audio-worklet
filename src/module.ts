@@ -43,7 +43,7 @@ export function createLimiterAudioWorkletNode<T extends TContext | TNativeContex
         channelCountMode: 'explicit',
         numberOfInputs: 1,
         numberOfOutputs: 1,
-        pocessorOptions: {
+        processorOptions: {
             attack
         }
     });
